@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#7c3aed">
+  <meta name="description" content="برنامه‌ریزی درسی رنگارنگ محمدرضا، پایه هشتم">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icons/icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="./icons/icon-192.png">
+<title>برنامه ی محمد رضا🤓🤓</title>
+<style>
+:root{--purple:#7c3aed;--pink:#ec4899;--blue:#38bdf8;--yellow:#fbbf24;--green:#34d399;--ink:#252044;--muted:#6f6a86;--card:#ffffffed}
+*{box-sizing:border-box}
+body{margin:0;font-family:Tahoma,"Vazirmatn",Arial,sans-serif;color:var(--ink);background:linear-gradient(135deg,#ffe0f0 0%,#e3e9ff 28%,#d8fff1 58%,#fff0c7 100%);min-height:100vh}
+header{padding:26px 18px 22px;text-align:center;color:white;background:linear-gradient(110deg,#7c3aed,#ec4899,#f59e0b);border-radius:0 0 30px 30px;box-shadow:0 8px 24px #7c3aed35}
+header h1{font-size:clamp(23px,5vw,32px);margin:0 0 8px}header p{margin:0;font-size:14px;opacity:.95}
+.wrap{width:min(920px,100%);margin:auto;padding:16px 13px 35px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:14px 0}
+.stat{background:#ffffffdc;border:1px solid #ffffff;border-radius:17px;padding:13px 8px;text-align:center;box-shadow:0 4px 14px #34256a0d}
+.stat strong{display:block;font-size:23px;color:#7c3aed;margin-bottom:4px}.stat span{font-size:12px;color:var(--muted)}
+nav{display:flex;gap:7px;overflow-x:auto;padding:4px 0 12px}
+nav button{white-space:nowrap;border:0;border-radius:999px;padding:11px 15px;background:#ffffffc9;color:#574a7e;font-weight:bold;cursor:pointer}
+nav button.active{background:#7c3aed;color:white;box-shadow:0 4px 12px #7c3aed40}
+.panel{display:none}.panel.active{display:block}
+.card{background:var(--card);border:1px solid #fff;border-radius:22px;padding:17px;margin-bottom:13px;box-shadow:0 7px 24px #3b287b0d}
+h2{font-size:19px;margin:0 0 14px}h3{font-size:15px;margin:0 0 8px}
+label{font-size:13px;font-weight:bold;display:block;margin-bottom:6px;color:#51456e}
+input,select,textarea{font:inherit;width:100%;padding:12px;border:1px solid #e5def5;border-radius:12px;background:#fff;color:var(--ink);outline:none}
+input:focus,select:focus,textarea:focus{border-color:#a78bfa;box-shadow:0 0 0 3px #a78bfa2b}
+.row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.field{margin-bottom:11px}
+.btn{border:0;border-radius:13px;padding:12px 15px;font:inherit;font-weight:bold;cursor:pointer;background:#7c3aed;color:#fff}
+.btn.secondary{background:#ede9fe;color:#5b21b6}.btn.pink{background:#ec4899}.btn.green{background:#059669}.btn.danger{background:#fee2e2;color:#b91c1c}.btn.small{padding:7px 10px;font-size:12px}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.list{display:grid;gap:9px}
+.item{border:1px solid #eee7fb;border-radius:15px;padding:12px;display:flex;align-items:center;gap:10px;background:#fff}
+.item .content{flex:1;min-width:0}.item .title{font-weight:bold;font-size:14px}.item .sub{font-size:12px;color:var(--muted);margin-top:5px}
+.check{width:22px;height:22px;accent-color:#7c3aed;flex-shrink:0}
+.done .title{text-decoration:line-through;color:#9b95ad}
+.pill{display:inline-block;padding:5px 9px;border-radius:999px;font-size:11px;font-weight:bold;background:#ede9fe;color:#6d28d9}
+.empty{text-align:center;padding:22px;color:var(--muted);font-size:13px}
+.rainbow{height:8px;border-radius:99px;background:linear-gradient(90deg,#f87171,#fbbf24,#34d399,#38bdf8,#818cf8,#f472b6);margin:10px 0 16px}
+.timer{text-align:center;padding:16px 0}
+.time{font-size:clamp(48px,12vw,72px);font-weight:bold;letter-spacing:2px;color:#7c3aed;font-variant-numeric:tabular-nums}
+.timer-ring{width:min(235px,65vw);height:min(235px,65vw);border-radius:50%;margin:12px auto;display:grid;place-items:center;background:conic-gradient(#ec4899 var(--progress,0%),#eee7fb 0);position:relative}
+.timer-ring:before{content:"";position:absolute;inset:10px;border-radius:50%;background:#fff}
+.timer-inner{position:relative;z-index:1}
+.hint{font-size:12px;line-height:1.9;color:var(--muted)}
+footer{text-align:center;font-size:11px;color:#756c90;padding:15px}
+@media(min-width:680px){.two-col{display:grid;grid-template-columns:1fr 1fr;gap:13px}.two-col .card{margin-bottom:0}.stats{gap:13px}.stat{padding:16px}}
+@media(max-width:420px){.row{grid-template-columns:1fr}.card{padding:14px}.stats .stat strong{font-size:20px}}
+</style>
+</head>
+<body>
+<header>
+  <h1>🌈 برنامه ی محمد رضا🤓🤓</h1>
+  <p>برنامه‌ریز رنگی و شادِ پایه هشتم ✨ قدم‌به‌قدم تا موفقیت!</p>
+</header>
+<main class="wrap">
+  <section class="stats">
+    <div class="stat"><strong id="statDone">۰</strong><span>کار انجام‌شده ✅</span></div>
+    <div class="stat"><strong id="statTotal">۰</strong><span>کل کارها 📝</span></div>
+    <div class="stat"><strong id="statMinutes">۰</strong><span>دقیقه تمرکز امروز ⏱️</span></div>
+  </section>
+  <nav>
+    <button class="active" data-tab="home">🏠 خانه</button>
+    <button data-tab="schedule">🗓️ برنامه زمانی</button>
+    <button data-tab="subjects">📚 درس‌ها</button>
+    <button data-tab="tasks">✅ چک‌لیست</button>
+    <button data-tab="timer">⏱️ تایمر</button>
+  </nav>
+
+  <section id="home" class="panel active">
+    <div class="card">
+      <h2>سلام محمدرضا! 🤓🌟</h2>
+      <div class="rainbow"></div>
+      <p id="todayText" class="hint"></p>
+      <h3>🎯 کارهای امروز</h3>
+      <div id="homeTasks" class="list"></div>
+      <div class="actions"><button class="btn" onclick="switchTab('tasks')">رفتن به چک‌لیست</button><button class="btn secondary" onclick="switchTab('schedule')">دیدن برنامه</button></div>
+    </div>
+    <div class="card">
+      <h2>💡 روش پیشنهادی مطالعه</h2>
+      <p class="hint">۲۵ دقیقه با تمرکز درس بخوان، ۵ دقیقه استراحت کن. بعد از چهار دور، یک استراحت طولانی‌تر داشته باش. موقع مرور، کتاب را ببند و سعی کن نکته‌ها را از حافظه توضیح بدهی.</p>
+    </div>
+  </section>
+
+  <section id="schedule" class="panel">
+    <div class="card">
+      <h2>🗓️ برنامه زمانی روزانه</h2>
+      <p class="hint">برنامه پیش‌فرض قابل ویرایش است. ساعت‌ها را با برنامه مدرسه و امتحان‌هایت هماهنگ کن.</p>
+      <div class="row">
+        <div class="field"><label for="schedTitle">کار یا درس</label><input id="schedTitle" placeholder="مثلاً علوم: فصل ۱"></div>
+        <div class="field"><label for="schedSubject">درس</label><select id="schedSubject"></select></div>
+        <div class="field"><label for="schedStart">شروع</label><input id="schedStart" type="time" value="17:00"></div>
+        <div class="field"><label for="schedEnd">پایان</label><input id="schedEnd" type="time" value="17:45"></div>
+      </div>
+      <button class="btn" onclick="addSchedule()">➕ افزودن به برنامه</button>
+    </div>
+    <div class="card"><h2>📌 برنامه من</h2><div id="scheduleList" class="list"></div></div>
+  </section>
+
+  <section id="subjects" class="panel">
+    <div class="card">
+      <h2>📚 مدیریت درس‌ها</h2>
+      <div class="row">
+        <div class="field"><label for="subjectName">نام درس</label><input id="subjectName" placeholder="مثلاً ریاضی"></div>
+        <div class="field"><label for="subjectColor">رنگ درس</label><select id="subjectColor"><option value="#8b5cf6">بنفش 💜</option><option value="#ec4899">صورتی 🩷</option><option value="#0ea5e9">آبی 🩵</option><option value="#10b981">سبز 💚</option><option value="#f59e0b">نارنجی 🧡</option><option value="#ef4444">قرمز ❤️</option></select></div>
+      </div>
+      <button class="btn pink" onclick="addSubject()">➕ افزودن درس</button>
+    </div>
+    <div class="card"><h2>🎨 درس‌های من</h2><div id="subjectList" class="list"></div></div>
+  </section>
+
+  <section id="tasks" class="panel">
+    <div class="card">
+      <h2>✅ چک‌لیست پیشرفت</h2>
+      <div class="row">
+        <div class="field"><label for="taskTitle">کار درسی</label><input id="taskTitle" placeholder="مثلاً مرور پیام آیات دینی"></div>
+        <div class="field"><label for="taskSubject">درس مربوطه</label><select id="taskSubject"></select></div>
+      </div>
+      <div class="row">
+        <div class="field"><label for="taskDate">تاریخ</label><input id="taskDate" type="date"></div>
+        <div class="field"><label for="taskPriority">اولویت</label><select id="taskPriority"><option>معمولی</option><option>مهم</option><option>خیلی مهم</option></select></div>
+      </div>
+      <button class="btn green" onclick="addTask()">➕ افزودن کار</button>
+    </div>
+    <div class="card"><h2>🌟 کارهای برنامه‌ریزی‌شده</h2><div id="taskList" class="list"></div></div>
+  </section>
+
+  <section id="timer" class="panel">
+    <div class="card">
+      <h2>⏱️ تایمر مطالعه</h2>
+      <p class="hint">زمان تمرکز را انتخاب کن. وقتی تایمر تمام شود، زمان مطالعه به آمار امروز اضافه می‌شود.</p>
+      <div class="timer">
+        <div class="timer-ring" id="timerRing"><div class="timer-inner"><div class="time" id="timeDisplay">25:00</div><div class="pill" id="timerLabel">زمان تمرکز 📚</div></div></div>
+        <div class="row">
+          <div class="field"><label for="timerMinutes">مدت (دقیقه)</label><select id="timerMinutes"><option value="15">۱۵ دقیقه</option><option value="25" selected>۲۵ دقیقه</option><option value="30">۳۰ دقیقه</option><option value="45">۴۵ دقیقه</option><option value="60">۶۰ دقیقه</option></select></div>
+          <div class="field"><label for="timerMode">حالت</label><select id="timerMode"><option value="focus">مطالعه 📚</option><option value="break">استراحت 🌿</option></select></div>
+        </div>
+        <div class="actions" style="justify-content:center">
+          <button class="btn green" id="startTimer" onclick="startTimer()">▶️ شروع</button>
+          <button class="btn secondary" onclick="pauseTimer()">⏸️ مکث</button>
+          <button class="btn danger" onclick="resetTimer()">↻ از نو</button>
+        </div>
+        <p class="hint" id="timerMessage">آماده‌ای؟ گوشی را کنار بگذار و با تمرکز شروع کن 💪</p>
+      </div>
+    </div>
+  </section>
+  <footer>ساخته‌شده با انرژی خوب برای محمدرضا 🌈🤓 · اطلاعات در همین مرورگر ذخیره می‌شود.</footer>
+</main>
+<script>
+const faNum=n=>String(n).replace(/\d/g,d=>'۰۱۲۳۴۵۶۷۸۹'[d]);
+const today=new Date(); const dateKey=today.getFullYear()+'-'+String(today.getMonth()+1).padStart(2,'0')+'-'+String(today.getDate()).padStart(2,'0');
+document.getElementById('taskDate').value=dateKey;
+document.getElementById('todayText').textContent='امروز '+new Intl.DateTimeFormat('fa-IR',{weekday:'long',year:'numeric',month:'long',day:'numeric'}).format(today)+' است. هر قدم کوچک، یک پیشرفت بزرگه! 🌈';
+let subjects=JSON.parse(localStorage.getItem('mr_subjects')||'null')||[
+ {id:1,name:'علوم',color:'#0ea5e9'},{id:2,name:'دینی',color:'#ec4899'},{id:3,name:'ریاضی',color:'#8b5cf6'},{id:4,name:'فارسی',color:'#10b981'},{id:5,name:'زبان انگلیسی',color:'#f59e0b'}
+];
+let tasks=JSON.parse(localStorage.getItem('mr_tasks')||'null')||[
+ {id:101,title:'مطالعه علوم — فصل اول',subject:'علوم',date:dateKey,priority:'خیلی مهم',done:false},
+ {id:102,title:'مطالعه علوم — فصل دوم',subject:'علوم',date:dateKey,priority:'خیلی مهم',done:false},
+ {id:103,title:'مرور دینی — درس اول',subject:'دینی',date:dateKey,priority:'مهم',done:false},
+ {id:104,title:'مرور دینی — درس دوم',subject:'دینی',date:dateKey,priority:'مهم',done:false}
+];
+let schedules=JSON.parse(localStorage.getItem('mr_schedule')||'null')||[
+ {id:201,title:'علوم — فصل اول',subject:'علوم',start:'17:00',end:'17:45'},
+ {id:202,title:'استراحت کوتاه',subject:'استراحت',start:'17:45',end:'17:55'},
+ {id:203,title:'علوم — فصل دوم',subject:'علوم',start:'17:55',end:'18:40'},
+ {id:204,title:'دینی — درس اول',subject:'دینی',start:'18:50',end:'19:25'},
+ {id:205,title:'دینی — درس دوم',subject:'دینی',start:'19:35',end:'20:10'},
+ {id:206,title:'مرور و حل نمونه سؤال',subject:'مرور',start:'20:10',end:'20:40'}
+];
+let focusMinutes=Number(localStorage.getItem('mr_focus_'+dateKey)||0);
+let timerDuration=25*60,remaining=timerDuration,timerInterval=null,timerRunning=false,timerStartedAt=null;
+function save(){localStorage.setItem('mr_subjects',JSON.stringify(subjects));localStorage.setItem('mr_tasks',JSON.stringify(tasks));localStorage.setItem('mr_schedule',JSON.stringify(schedules));localStorage.setItem('mr_focus_'+dateKey,String(focusMinutes));}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function switchTab(id){document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id===id));document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.tab===id));if(id==='timer')renderTimer();window.scrollTo({top:0,behavior:'smooth'});}
+document.querySelectorAll('nav button').forEach(b=>b.addEventListener('click',()=>switchTab(b.dataset.tab)));
+function fillSubjectSelects(){['schedSubject','taskSubject'].forEach(id=>{const el=document.getElementById(id),old=el.value;el.innerHTML=subjects.map(s=>`<option value="${esc(s.name)}">${esc(s.name)}</option>`).join('')+`<option value="مرور">مرور</option><option value="استراحت">استراحت</option>`;if(old)el.value=old;});}
+function addSubject(){const name=document.getElementById('subjectName').value.trim();if(!name)return alert('اول اسم درس را بنویس 😊');if(subjects.some(s=>s.name===name))return alert('این درس قبلاً اضافه شده است.');subjects.push({id:Date.now(),name,color:document.getElementById('subjectColor').value});document.getElementById('subjectName').value='';save();render();}
+function deleteSubject(id){if(!confirm('این درس حذف شود؟'))return;subjects=subjects.filter(s=>s.id!==id);save();render();}
+function renderSubjects(){document.getElementById('subjectList').innerHTML=subjects.length?subjects.map(s=>`<div class="item"><span style="width:13px;height:38px;border-radius:9px;background:${s.color}"></span><div class="content"><div class="title">${esc(s.name)}</div><div class="sub">درس پایه هشتم</div></div><button class="btn danger small" onclick="deleteSubject(${s.id})">حذف</button></div>`).join(''):'<div class="empty">هنوز درسی اضافه نشده.</div>';}
+function addTask(){const title=document.getElementById('taskTitle').value.trim();if(!title)return alert('عنوان کار را بنویس 😊');tasks.push({id:Date.now(),title,subject:document.getElementById('taskSubject').value,date:document.getElementById('taskDate').value||dateKey,priority:document.getElementById('taskPriority').value,done:false});document.getElementById('taskTitle').value='';save();render();}
+function toggleTask(id){const t=tasks.find(t=>t.id===id);if(t)t.done=!t.done;save();render();}
+function deleteTask(id){tasks=tasks.filter(t=>t.id!==id);save();render();}
+function taskMarkup(t){return `<div class="item ${t.done?'done':''}"><input class="check" type="checkbox" ${t.done?'checked':''} onchange="toggleTask(${t.id})" aria-label="انجام شد"><div class="content"><div class="title">${esc(t.title)}</div><div class="sub">${esc(t.subject)} · ${esc(t.date||'بدون تاریخ')} · <span class="pill">${esc(t.priority)}</span></div></div><button class="btn danger small" onclick="deleteTask(${t.id})">حذف</button></div>`;}
+function renderTasks(){const sorted=[...tasks].sort((a,b)=>(a.done-b.done)||((a.date||'').localeCompare(b.date||'')));document.getElementById('taskList').innerHTML=sorted.length?sorted.map(taskMarkup).join(''):'<div class="empty">هنوز کاری نداری؛ یک کار اضافه کن! 🌼</div>';const todayTasks=tasks.filter(t=>!t.date||t.date===dateKey);document.getElementById('homeTasks').innerHTML=todayTasks.length?todayTasks.slice(0,5).map(taskMarkup).join(''):'<div class="empty">برای امروز کاری ثبت نشده. استراحت هم مهمه! 🌿</div>';document.getElementById('statDone').textContent=faNum(tasks.filter(t=>t.done).length);document.getElementById('statTotal').textContent=faNum(tasks.length);document.getElementById('statMinutes').textContent=faNum(focusMinutes);}
+function addSchedule(){const title=document.getElementById('schedTitle').value.trim();const start=document.getElementById('schedStart').value,end=document.getElementById('schedEnd').value;if(!title)return alert('اسم کار یا درس را وارد کن.');if(!start||!end||end<=start)return alert('ساعت پایان باید بعد از ساعت شروع باشد.');schedules.push({id:Date.now(),title,subject:document.getElementById('schedSubject').value,start,end});document.getElementById('schedTitle').value='';save();render();}
+function deleteSchedule(id){schedules=schedules.filter(s=>s.id!==id);save();render();}
+function renderSchedule(){schedules.sort((a,b)=>a.start.localeCompare(b.start));document.getElementById('scheduleList').innerHTML=schedules.length?schedules.map(s=>`<div class="item"><div class="content"><div class="title">${esc(s.title)}</div><div class="sub">🕒 ${esc(s.start)} تا ${esc(s.end)} · ${esc(s.subject)}</div></div><button class="btn danger small" onclick="deleteSchedule(${s.id})">حذف</button></div>`).join(''):'<div class="empty">برنامه‌ای ثبت نشده است.</div>';}
+function render(){fillSubjectSelects();renderSubjects();renderTasks();renderSchedule();save();}
+function renderTimer(){document.getElementById('timeDisplay').textContent=String(Math.floor(remaining/60)).padStart(2,'0')+':'+String(remaining%60).padStart(2,'0');document.getElementById('timerRing').style.setProperty('--progress',((1-remaining/timerDuration)*100)+'%');document.getElementById('timerLabel').textContent=document.getElementById('timerMode').value==='focus'?'زمان تمرکز 📚':'زمان استراحت 🌿';}
+function startTimer(){if(timerRunning)return;timerRunning=true;timerStartedAt=Date.now();document.getElementById('timerMessage').textContent='آفرین! با تمرکز ادامه بده 💪';timerInterval=setInterval(()=>{remaining--;renderTimer();if(remaining<=0){clearInterval(timerInterval);timerRunning=false;if(document.getElementById('timerMode').value==='focus'){focusMinutes+=Math.round(timerDuration/60);save();renderTasks();}document.getElementById('timerMessage').textContent=document.getElementById('timerMode').value==='focus'?'آفرین! یک دور مطالعه کامل شد 🎉 حالا کمی استراحت کن.':'استراحت تمام شد؛ آماده‌ای برای دور بعدی؟ 🌈';if(navigator.vibrate)navigator.vibrate([180,100,180]);alert(document.getElementById('timerMode').value==='focus'?'زمان مطالعه تمام شد! آفرین 🎉':'زمان استراحت تمام شد!');}},1000);document.getElementById('startTimer').textContent='▶️ در حال اجرا';}
+function pauseTimer(){if(timerInterval)clearInterval(timerInterval);timerInterval=null;timerRunning=false;document.getElementById('startTimer').textContent='▶️ ادامه';document.getElementById('timerMessage').textContent='تایمر مکث شده است.';}
+function resetTimer(){pauseTimer();timerDuration=Number(document.getElementById('timerMinutes').value)*60;remaining=timerDuration;renderTimer();document.getElementById('startTimer').textContent='▶️ شروع';document.getElementById('timerMessage').textContent='هر وقت آماده‌ای شروع کن 🌟';}
+document.getElementById('timerMinutes').addEventListener('change',resetTimer);document.getElementById('timerMode').addEventListener('change',()=>{resetTimer();renderTimer();});
+render();
+</script>
+<script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("./sw.js").catch((err) => console.log("SW registration failed", err));
+    });
+  }
+</script>
+</body>
+</html>
